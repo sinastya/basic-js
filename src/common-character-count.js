@@ -25,6 +25,7 @@ function getCommonCharacterCount(s1, s2) {
   return res.length
 }
 
+
 module.exports = {
   getCommonCharacterCount
 };

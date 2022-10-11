@@ -37,6 +37,7 @@ function renameFiles(names) {
   return res
 }
 
+
 module.exports = {
   renameFiles
 };

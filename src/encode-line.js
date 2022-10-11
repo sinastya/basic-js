@@ -33,6 +33,7 @@ function encodeLine(str) {
   return res.join('')
 }
 
+
 module.exports = {
   encodeLine
 };

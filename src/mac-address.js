@@ -18,6 +18,7 @@ function isMAC48Address(n) {
   const template = /((\d{2}|\d{1}[A-F]|[A-F]{2}|[A-F]\d{1})-){5}(\d{2}|\d{1}[A-F]|[A-F]{2}|[A-F]\d{1})/;
   return template.test(n)
 }
+
 module.exports = {
   isMAC48Address
 };
