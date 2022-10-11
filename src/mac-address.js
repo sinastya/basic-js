@@ -19,6 +19,7 @@ function isMAC48Address(n) {
   return template.test(n)
 }
 
+
 module.exports = {
   isMAC48Address
 };

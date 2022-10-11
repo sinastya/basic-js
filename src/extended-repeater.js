@@ -26,6 +26,7 @@ function repeater(str, options) {
   return arr1.join('')
 }
 
+
 module.exports = {
   repeater
 };

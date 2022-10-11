@@ -21,7 +21,6 @@ const { NotImplementedError } = require('../extensions/index.js');
     return counter
 }
 
-
 module.exports = {
   countCats
 };

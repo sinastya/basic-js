@@ -19,14 +19,69 @@ const { NotImplementedError } = require('../extensions/index.js');
  * reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'
  * 
  */
-class VigenereCipheringMachine {
-  encrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+ class VigenereCipheringMachine {
+  constructor (direct = true) {
+    this.direct = direct;
+    this.alp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
   }
-  decrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+  encrypt(message, key) {
+    if (message && key) {
+      const mesArr = message.toUpperCase().split('');
+      const keyArr = key.toUpperCase().repeat(Math.ceil(message.length/key.length)).split('');
+      let newMessage =[];
+      
+      mesArr.forEach((el, i) => {
+        let alph = [...this.alp];
+
+        if (this.alp.indexOf(el)>=0) {
+          let shift = this.alp.indexOf(keyArr[i]);
+          for (let i=0; i<shift; i++) {
+          alph.push(alph.shift());
+        }
+          const newLet = alph[this.alp.indexOf(el)]
+          newMessage.push(newLet)
+        } 
+        else {
+          keyArr.unshift(1)
+          newMessage.push(el)
+        }
+      })
+      
+      return (this.direct) ? newMessage.join('') : newMessage.reverse().join('')
+    } 
+    else {
+      throw new Error ('Incorrect arguments!')
+    }
+  }
+  
+  decrypt(message, key) {
+    if (message && key) {
+      const mesArr = message.toUpperCase().split('');
+      const keyArr = key.toUpperCase().repeat(Math.ceil(message.length/key.length)).split('');
+      let newMessage =[];
+      
+      mesArr.forEach((el, i) => {
+        let alph = [...this.alp];
+
+        if (this.alp.indexOf(el)>=0) {
+          let shift = this.alp.indexOf(keyArr[i]);
+          for (let i=0; i<shift; i++) {
+            alph.unshift(alph.pop());
+            }
+          const newLet = alph[this.alp.indexOf(el)]
+          newMessage.push(newLet)
+        } 
+        else {
+          keyArr.unshift(1)
+          newMessage.push(el)
+        }
+      })
+
+      return (this.direct) ? newMessage.join('') : newMessage.reverse().join('')
+    } else {
+      throw new Error ('Incorrect arguments!')
+    }
   }
 }
 

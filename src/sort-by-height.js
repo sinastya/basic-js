@@ -27,7 +27,6 @@ function sortByHeight(arr) {
   return arr2
 }
 
-
 module.exports = {
   sortByHeight
 };

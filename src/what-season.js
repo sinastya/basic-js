@@ -19,40 +19,22 @@ function getSeason(date) {
     'fall': [8, 9, 10],
   }
 
-  
-  // (typeof(date) != 'object' || typeof date.valueOf() != 'number' || !(date instanceof Date))
-  // (!date.getTime())
-    try {
-      date.getUTCDay()
-
-      const month = date.getMonth();
-      for (let s in seasons) {
-        if (seasons[s].some(num => num == month)) {
-          return s
-          // console.log(s)
-        }
-      }
-    }
-    catch (e) {
-      if (!date) {
-        // console.log('Unable to determine the time of year!')
-        // console.log(e.name)
-        // console.log(e.message)
-
-        throw new NotImplementedError('Unable to determine the time of year!');
-      }
-      // else if (!date.getMonth()) {
-      //   console.log('Invalid date!')
-      //   console.log(e.name)
-      //   console.log(e.message)
-      // }
-      else {
-        // console.log('Invalid date!')
-        // console.log(e.name)
-        // console.log(e.message)
-        throw new NotImplementedError('Invalid date!');
-    }
+  if (!date) {
+    return 'Unable to determine the time of year!'
   }
+  try {
+    date.getUTCDay()
+  } 
+  catch {
+    throw new Error('Invalid date!');
+  }
+
+  const month = date.getMonth();
+  for (let s in seasons) {
+    if (seasons[s].some(num => num == month)) {
+      return s
+    }
+  } 
 }
 
 module.exports = {

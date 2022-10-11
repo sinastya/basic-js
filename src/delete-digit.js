@@ -20,6 +20,7 @@ function deleteDigit(n) {
   return arr2[0]
 }
 
+
 module.exports = {
   deleteDigit
 };
